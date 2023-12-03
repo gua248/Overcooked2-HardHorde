@@ -86,10 +86,14 @@ namespace OC2HardHorde
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(ToggleOption), "OnToggleButtonPressed")]
-        public static bool ToggleOptionOnToggleButtonPressedPatch(bool bValue)
+        public static bool ToggleOptionOnToggleButtonPressedPatch(ToggleOption __instance, bool bValue)
         {
-            HardHordeSettings.enabled = bValue;
-            return false;
+            if (__instance == HardHordeSettings.hardHordeOption)
+            {
+                HardHordeSettings.enabled = bValue;
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -53,10 +53,10 @@ namespace OC2HardHorde.Extension
             fieldInfo_m_SyncOptions.SetValue(instance, options);
         }
 
-        public static void set_m_discard(this FrontendOptionsMenu instance, bool discard)
-        {
-            fieldInfo_m_discard.SetValue(instance, discard);
-        }
+        //public static void set_m_discard(this FrontendOptionsMenu instance, bool discard)
+        //{
+        //    fieldInfo_m_discard.SetValue(instance, discard);
+        //}
     }
 
     public static class BaseUIOptionExtension
