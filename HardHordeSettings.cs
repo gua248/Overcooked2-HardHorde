@@ -16,7 +16,7 @@ namespace OC2HardHorde
 
         private static void AddHardHordeSettingsUI()
         {
-            if (modSettingsMenu == null) return;
+            if (modSettingsMenu == null || hardHordeOption != null) return;
             GameObject hardHordeOptionObj = GameObject.Instantiate(gameSettingsMenu.transform.GetChild(0).Find("ContentPC").GetChild(1).GetChild(0).GetChild(3).gameObject);
             hardHordeOptionObj.name = "HardHorde";
             hardHordeOptionObj.transform.SetParent(modSettingsMenu.transform.GetChild(0).Find("ContentPC").GetChild(1).GetChild(0), false);
@@ -44,7 +44,9 @@ namespace OC2HardHorde
             if (root == null) return;
             FrontendRootMenu frontendRootMenu = root.GetComponent<FrontendRootMenu>();
             gameSettingsMenu = root.transform.GetChild(1).GetChild(0).Find("GameOptions").GetComponent<FrontendOptionsMenu>();
-            
+            modSettingsMenu = root.transform.GetChild(1).GetChild(0).Find("ModOptions")?.GetComponent<FrontendOptionsMenu>();
+            if (modSettingsMenu != null) return;
+
             Transform settingsTab = root.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(4);
             float dh = settingsTab.GetChild(0).GetComponent<RectTransform>().rect.height;
             RectTransform rect = settingsTab.GetComponent<RectTransform>();
@@ -125,7 +127,6 @@ namespace OC2HardHorde
 
         public static void AddUI()
         {
-            if (modSettingsMenu != null) return;
             AddModSettingsUI();
             AddHardHordeSettingsUI();
         }
