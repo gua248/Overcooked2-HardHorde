@@ -17,7 +17,7 @@ namespace OC2HardHorde
             pluginInstance = this;
             patcher = new Harmony("dev.gua.overcooked.hardhorde");
             patcher.PatchAll(typeof(Patch));
-            foreach (var patched in Harmony.GetAllPatchedMethods())
+            foreach (var patched in patcher.GetPatchedMethods())
                 Log("Patched: " + patched.FullDescription());
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
